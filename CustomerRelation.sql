@@ -6,7 +6,7 @@ GO
 USE CRM_Database;
 GO
 
--- 1. Customers
+
 CREATE TABLE Customers (
     CustomerID INT IDENTITY(1,1) PRIMARY KEY,
     CustomerName VARCHAR(150) NOT NULL,
@@ -17,7 +17,7 @@ CREATE TABLE Customers (
     CreatedAt DATETIME2 DEFAULT SYSDATETIME()
 );
 
--- 2. Contacts
+
 CREATE TABLE Contacts (
     ContactID INT IDENTITY(1,1) PRIMARY KEY,
     CustomerID INT NOT NULL,
@@ -33,7 +33,7 @@ CREATE TABLE Contacts (
         REFERENCES Customers(CustomerID)
 );
 
--- 3. Leads
+
 CREATE TABLE Leads (
     LeadID INT IDENTITY(1,1) PRIMARY KEY,
     ContactID INT NULL,
@@ -56,7 +56,7 @@ CREATE TABLE Leads (
         ))
 );
 
--- 4. Opportunities
+
 CREATE TABLE Opportunities (
     OpportunityID INT IDENTITY(1,1) PRIMARY KEY,
     CustomerID INT NOT NULL,
@@ -86,7 +86,7 @@ CREATE TABLE Opportunities (
         ))
 );
 
--- Indexes for common relationship lookups
+
 CREATE INDEX IX_Contacts_CustomerID
     ON Contacts(CustomerID);
 
